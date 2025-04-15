@@ -50,7 +50,7 @@ export const Header = () => {
                                 ポケモン一覧
                             </ChakraLink>
                             <ChakraLink as={Link} to="/favorites" onClick={onClose}>
-                                お気に入り一覧
+                                お気に入り
                             </ChakraLink>
                             <ChakraLink as={Link} to="/" onClick={() => { onClose(); handleLogout(); }}>
                                 ログアウト
