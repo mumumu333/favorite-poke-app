@@ -1,12 +1,10 @@
 import {
     Box,
-    Flex,
     IconButton,
     useDisclosure,
     Drawer,
     DrawerOverlay,
     DrawerContent,
-    DrawerHeader,
     DrawerBody,
     VStack,
     Link as ChakraLink,
@@ -19,6 +17,7 @@ export const Header = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const toast = useToast();
 
+    // ログアウトクリック時のトースト表示
     const handleLogout = () => {
         toast({
             title: "ログアウトしました",
@@ -31,22 +30,22 @@ export const Header = () => {
 
     return (
         <Box position="fixed" top="0" left="0" w="100%" zIndex="999">
+            {/* ハンバーガーアイコン */}
             <Box textAlign="right" p="4">
                 <IconButton
                     icon={<HamburgerIcon />}
                     onClick={onOpen}
                     aria-label="Menu"
-                    fontSize="30px"
-                    color="gray.600"
+                    fontSize="largetitle"
+                    bg="transparent"
                 />
             </Box>
-
+            {/* Drawer */}
             <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerHeader >メニュー</DrawerHeader>
+                <DrawerContent fontSize="smalltitle" pl="10px">
                     <DrawerBody>
-                        <VStack align="start" spacing={4}>
+                        <VStack fontWeight="bold" mt="30px" align="start" spacing={5}>
                             <ChakraLink as={Link} to="/home" onClick={onClose}>
                                 ポケモン一覧
                             </ChakraLink>

@@ -13,18 +13,26 @@ const MainLayout = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === "/";
   const [pokemonData, setPokemonData] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    const stored = localStorage.getItem("favorites");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [memos, setMemos] = useState({});
   const [userId, setUserId] = useState("");
   const [passWord, setPassWord] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-  // 全ポケモン取得
+  // ページ読み込み時にAPI取得
   useEffect(() => {
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 500; i++) {
       fetchAllData(i, setPokemonData)
     }
   }, []);
+
+  // favoritesが変わるたびにローカルストレージに保存
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   return (
     <>

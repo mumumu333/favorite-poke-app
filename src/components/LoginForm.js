@@ -5,6 +5,7 @@ export const LoginForm = ({ userId, setUserId, passWord, setPassWord }) => {
   const navigate = useNavigate();
   const toast = useToast();
 
+  // ログインボタンクリック時の動き
   const onClickLogin = () => {
     if (userId === "1" && passWord === "1") {
       toast({
@@ -19,7 +20,8 @@ export const LoginForm = ({ userId, setUserId, passWord, setPassWord }) => {
       setPassWord("")
     } else {
       toast({
-        title: "IDもしくはパスワードが違います",
+        title: "IDもしくはパスワードが違います。",
+        description: "※どちらにも半角英数の1を入れるとログインできます",
         status: "error",
         duration: 2000,
         isClosable: true,
@@ -30,7 +32,7 @@ export const LoginForm = ({ userId, setUserId, passWord, setPassWord }) => {
 
   return (
     <Box maxW="sm" mx="auto" mt={20} p={8} bg="white" boxShadow="md" borderRadius="md">
-      <Heading size="md" mb={6} textAlign="center">
+      <Heading fontSize="midiumtitle" mb={6} textAlign="center">
         ログイン
       </Heading>
       <VStack spacing={4}>

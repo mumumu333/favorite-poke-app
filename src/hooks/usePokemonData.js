@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+// APIでポケモンデータを取得
 const api = axios.create({
     baseURL: `https://pokeapi.co/api/v2/`,
 });
@@ -15,6 +15,7 @@ const fetchApiData = async (endpoint, num) => {
 }
 
 export const fetchAllData = async (num, setData) => {
+    // 全てのURLのデータ取得
     const [species, details, skill] = await Promise.all([
         fetchApiData("pokemon-species", num),
         fetchApiData("pokemon", num),
