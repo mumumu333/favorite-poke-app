@@ -36,6 +36,17 @@
 - Axios（PokeAPIを利用）
 - Framer Motion（アニメーション）
 
-## 🧪 起動方法
-npm install
-npm start
+## 🧪 セットアップ方法
+1. リポジトリをクローンします：
+   `git clone https://github.com/mumumu333/favorite-poke-app.git`
+
+2. プロジェクトフォルダに移動します：
+   `cd favorite-poke-app`
+
+3. 必要なパッケージをインストールします：
+   `npm install` または `yarn install`
+
+4. アプリを起動します：
+   `npm start` または `yarn start`
+
+5. ブラウザで `http://localhost:3000` にアクセスして、アプリが動いているか確認します。
