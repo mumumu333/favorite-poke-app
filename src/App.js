@@ -40,9 +40,7 @@ const MainLayout = () => {
 
   // ページ読み込み時にAPI取得
   useEffect(() => {
-    for (let i = 1; i <= 500; i++) {
-      fetchAllData(i, setPokemonData)
-    }
+    fetchAllData(1, 1000, setPokemonData);
   }, []);
 
   // favoritesが変わるたびにローカルストレージに保存
