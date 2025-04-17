@@ -16,14 +16,26 @@ const MainLayout = () => {
   const [userId, setUserId] = useState("");
   const [passWord, setPassWord] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+
   // お気に入りとメモはローカルストレージに保存
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem("favorites");
-    return stored ? JSON.parse(stored) : [];
+    try {
+      const parsed = stored ? JSON.parse(stored) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
   });
+
   const [memos, setMemos] = useState(() => {
     const stored = localStorage.getItem("memos");
-    return stored ? JSON.parse(stored) : [];
+    try {
+      const parsed = stored ? JSON.parse(stored) : {};
+      return typeof parsed === "object" && parsed !== null && !Array.isArray(parsed) ? parsed : {};
+    } catch (e) {
+      return {};
+    }
   });
 
   // ページ読み込み時にAPI取得
@@ -35,7 +47,7 @@ const MainLayout = () => {
 
   // favoritesが変わるたびにローカルストレージに保存
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(memos));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
   // memosが変わるたびにローカルストレージに保存
